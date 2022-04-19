@@ -1,0 +1,39 @@
+ion-header{ 
+	--ion-background-color:#1F262D; 
+}
+ion-title{ 
+	color: #999999;
+}
+ion-button{
+	color: #37414b;
+}
+ion-label {
+    display:inline-block;
+    width:100%;
+    color: #999999;
+}
+.botones{ 
+	float:right; 
+	
+	display:inline-block;
+
+}
+.derecha{
+	margin:0px;
+	width:52px;height:48px
+}
+.bg_lg{ background:#DC0000;}
+.bg_ty{ background:#DC0000;}
+.bg_lo{ width:52px;height:48px}
+.bg_lg{ background:#DC0000;}
+ion-button.btn_con.button{--background: #28b779; }
+ion-button.btn_cot.button{--background: #da542e; }
+
+
+ion-item-option{
+	background:#1F262D; 
+	color: #FFFFFF;
+	font-size: 10px;
+	bottom:0px;
+	right:0px;
+}

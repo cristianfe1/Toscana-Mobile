@@ -1,0 +1,44 @@
+ion-header{ 
+	--ion-background-color:#DC0000; 
+}
+ion-title{ 
+	color: #FFFFFF;
+	margin-left: 10px;
+}
+.wrap-text {
+  white-space: normal;
+  color: #666666;
+  min-width: 80px;
+  max-width: 80px;
+  margin-right: 15px;
+}
+h6{
+	margin-right: 5px;
+  	color: #666666;
+  	font-size: 14px;
+}
+h6.nom{
+	margin-right: 5px;
+	font-size: 16px;
+	font-weight:bold;
+}
+h6.dir{
+	min-width: 200px;
+	max-width: 200px;
+}
+.margen{
+	margin-left:15px;
+	margin-right:0px;
+	--inner-padding-end: 0px;
+}
+.dia{
+	background-color:#EFEFEF;
+}
+ion-label.list{
+	font-size: 20px;
+    vertical-align: top;
+}
+.fixedLabel{
+	min-width: 100px !important;
+    max-width: 100px !important;
+}

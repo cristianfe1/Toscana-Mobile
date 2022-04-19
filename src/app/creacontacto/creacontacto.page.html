@@ -1,0 +1,291 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="dismissModal()"></ion-back-button>
+    </ion-buttons>
+      <ion-title>Contacto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="todo" *ngIf="cliente==0 else editcliente">
+		<ion-list>
+			<ion-item >
+				<ion-label>Asesores</ion-label>
+			  	<ion-select [(ngModel)]="asesor" [compareWith]="compareFn">
+			  		<ion-select-option value="">Seleccione</ion-select-option>
+			    	<ion-select-option *ngFor="let asesor of asesores" value="{{asesor.id}}">{{asesor.nombre}}</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Nombre:</ion-label>
+				<ion-input [(ngModel)]="nombre"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Apellido:</ion-label>
+				<ion-input [(ngModel)]="apellido"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Profesion</ion-label>
+			  	<ion-select [(ngModel)]="profesion" [compareWith]="compareFn">
+			  		<ion-select-option value="">Seleccione</ion-select-option>
+			    	<ion-select-option value="Constructor">Constructor</ion-select-option>
+			    	<ion-select-option value="Decorador">Decorador</ion-select-option>
+			    	<ion-select-option value="Disenador">Diseñador</ion-select-option>
+			    	<ion-select-option value="Ingeniero">Ingeniero</ion-select-option>
+			    	<ion-select-option value="Arquitecto">Arquitecto</ion-select-option>
+			    	<ion-select-option value="Sr-Sra">Sr-Sra</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Genero</ion-label>
+			  	<ion-select [(ngModel)]="genero" [compareWith]="compareFn">
+			  		<ion-select-option value="">N/A</ion-select-option>
+			    	<ion-select-option value="Femenino">Femenino</ion-select-option>
+			    	<ion-select-option value="Masculino">Masculino</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Telefono:</ion-label>
+				<ion-input [(ngModel)]="telefono" (ionChange)='onChangeTel($event.target.value)' ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Celular:</ion-label>
+				<ion-input [(ngModel)]="celular"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Email:</ion-label>
+				<ion-input [(ngModel)]="email"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Origen del Contacto</ion-label>
+			  	<ion-select [(ngModel)]="origen" [compareWith]="compareFn">
+			  		<ion-select-option value="">Seleccione</ion-select-option>
+			  		<ion-select-option value="Personal">Personal</ion-select-option>
+			    	<ion-select-option value="Cliente">Cliente</ion-select-option>
+			    	<ion-select-option value="Estudio de Arq">Estudio de Arq</ion-select-option>
+			    	<ion-select-option value="Ferias y Congresos">Ferias y Congresos</ion-select-option>
+			    	<ion-select-option value="Local Alvear">Local Alvear</ion-select-option>
+			    	<ion-select-option value="Local Norcenter">Local Norcenter</ion-select-option>
+			    	<ion-select-option value="Referido Norberto">Referido Norberto</ion-select-option>
+			    	<ion-select-option value="Pagina Web">Pagina Web</ion-select-option>
+			    	<ion-select-option value="Web/Local">Web/Local</ion-select-option>
+			    	<ion-select-option value="Web/Telefono">Web/Telefono</ion-select-option>
+			    	<ion-select-option value="Telefono Fabrica">Telefono Fabrica</ion-select-option>
+			    	<ion-select-option value="FB e IG - LeadGen">FB e IG - LeadGen</ion-select-option>
+			    	<ion-select-option value="Referido SUNOUT">Referido SUNOUT</ion-select-option>
+			    	<ion-select-option value="Referencia de un cliente">Referencia de un cliente</ion-select-option>
+			    	<ion-select-option value="Referencia de un tercero">Referencia de un tercero</ion-select-option>
+			    	<ion-select-option value="Telefono">Telefono</ion-select-option>
+			    	<ion-select-option value="Facebook">Facebook</ion-select-option>
+			    	<ion-select-option value="Instagram">Instagram</ion-select-option>
+			    	<ion-select-option value="Mailing">Mailing</ion-select-option>
+			    	<ion-select-option value="Whatsapp">Whatsapp</ion-select-option>
+			    	<ion-select-option value="Distribuidor">Distribuidor</ion-select-option>
+			    	<ion-select-option value="Mercado Libre">Mercado Libre</ion-select-option>
+			    	<ion-select-option value="Local Remeros">Mailing</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Pago Referido</ion-label>
+			  	<ion-select [(ngModel)]="referido" [compareWith]="compareFn">
+			    	<ion-select-option value="0">NO</ion-select-option>
+			    	<ion-select-option value="1">SI</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Tomado Por</ion-label>
+			  	<ion-select [(ngModel)]="tomado" [compareWith]="compareFn">
+			  		<ion-select-option value="">Seleccione</ion-select-option>
+			  		<ion-select-option *ngFor="let asesor of asesores" [value]="asesor.id">{{asesor.nombre}}</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Zona</ion-label>
+			  	<ion-select [(ngModel)]="zona" [compareWith]="compareFn">
+			  		<ion-select-option value="">Seleccione</ion-select-option>
+			  		<ion-select-option *ngFor="let zona of zonas" [value]="zona.departamento">{{zona.departamento}}</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Ciudad:</ion-label>
+				<ion-input [(ngModel)]="ciudad"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Direccion:</ion-label>
+				<ion-input [(ngModel)]="direccion"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Lineas de Productos</ion-label>
+			  	<ion-select [(ngModel)]="linea" [compareWith]="compareFn">
+			    	<ion-select-option value="">Seleccione</ion-select-option>
+			    	<ion-select-option value="muebles de jardin">Muebles de jardin</ion-select-option>
+			    	<ion-select-option value="toldos">Toldos</ion-select-option>
+			    	<ion-select-option value="cerramientos">Cerramientos</ion-select-option>
+			    	<ion-select-option value="techos de cristal">Techos de cristal</ion-select-option>
+			    	<ion-select-option value="pergolas retractiles">Pergolas retractiles</ion-select-option>
+			    	<ion-select-option value="cortinas de interior">Cortinas de interior</ion-select-option>
+			    	<ion-select-option value="cortinas de enrrollar">Cortinas de enrollar</ion-select-option>
+			    	<ion-select-option value="aberturas">Aberturas</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Consulta Cliente:</ion-label>
+				<ion-textarea [(ngModel)]="consulta"></ion-textarea>
+			</ion-item>
+			<ion-item>
+				<ion-label>Anotaciones Asesor:</ion-label>
+				<ion-textarea [(ngModel)]="anotacion"></ion-textarea>
+			</ion-item>
+		</ion-list>
+	</div>
+	<ng-template #editcliente>
+		<div class="todo">
+		<ion-list *ngFor="let datos of clientes">
+			<ion-item >
+				<ion-label>Asesores</ion-label>
+			  	<ion-select [(ngModel)]="asesor" placeholder="{{datos.nombre}}"  [compareWith]="compareFn">
+			      	<ion-select-option *ngFor="let asesor of asesores" [value]="asesor.id">{{asesor.nombre}}</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Nombre:</ion-label>
+				<ion-input [(ngModel)]="nombre" placeholder="{{datos.nombres}}"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Apellido:</ion-label>
+				<ion-input [(ngModel)]="apellido" placeholder="{{datos.apellidos}}"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Profesion</ion-label>
+			  	<ion-select [(ngModel)]="profesion" placeholder="{{datos.profesion}}" [compareWith]="compareFn" >
+			  		<ion-select-option value="">Seleccione</ion-select-option>
+			    	<ion-select-option value="Constructor">Constructor</ion-select-option>
+			    	<ion-select-option value="Decorador">Decorador</ion-select-option>
+			    	<ion-select-option value="Disenador">Diseñador</ion-select-option>
+			    	<ion-select-option value="Ingeniero">Ingeniero</ion-select-option>
+			    	<ion-select-option value="Arquitecto">Arquitecto</ion-select-option>
+			    	<ion-select-option value="Sr-Sra">Sr-Sra</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Genero</ion-label>
+			  	<ion-select [(ngModel)]="genero" placeholder="{{datos.genero}}" [compareWith]="compareFn">
+			  		<ion-select-option value="">N/A</ion-select-option>
+			    	<ion-select-option value="Femenino">Femenino</ion-select-option>
+			    	<ion-select-option value="Masculino">Masculino</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Telefono:</ion-label>
+				<ion-input [(ngModel)]="telefono" placeholder="{{datos.telefono}}"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Celular:</ion-label>
+				<ion-input [(ngModel)]="celular" placeholder="{{datos.celular}}"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Email:</ion-label>
+				<ion-input [(ngModel)]="email" placeholder="{{datos.email}}"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Origen del Contacto</ion-label>
+			  	<ion-select [(ngModel)]="origen" placeholder="{{datos.origen}}" [compareWith]="compareFn">
+			  		<ion-select-option value="">Seleccione</ion-select-option>
+			  		<ion-select-option value="Personal">Personal</ion-select-option>
+			    	<ion-select-option value="Cliente">Cliente</ion-select-option>
+			    	<ion-select-option value="Estudio de Arq">Estudio de Arq</ion-select-option>
+			    	<ion-select-option value="Ferias y Congresos">Ferias y Congresos</ion-select-option>
+			    	<ion-select-option value="Local Alvear">Local Alvear</ion-select-option>
+			    	<ion-select-option value="Local Norcenter">Local Norcenter</ion-select-option>
+			    	<ion-select-option value="Referido Norberto">Referido Norberto</ion-select-option>
+			    	<ion-select-option value="Pagina Web">Pagina Web</ion-select-option>
+			    	<ion-select-option value="Web/Local">Web/Local</ion-select-option>
+			    	<ion-select-option value="Web/Telefono">Web/Telefono</ion-select-option>
+			    	<ion-select-option value="Telefono Fabrica">Telefono Fabrica</ion-select-option>
+			    	<ion-select-option value="FB e IG - LeadGen">FB e IG - LeadGen</ion-select-option>
+			    	<ion-select-option value="Referido SUNOUT">Referido SUNOUT</ion-select-option>
+			    	<ion-select-option value="Referencia de un cliente">Referencia de un cliente</ion-select-option>
+			    	<ion-select-option value="Referencia de un tercero">Referencia de un tercero</ion-select-option>
+			    	<ion-select-option value="Telefono">Telefono</ion-select-option>
+			    	<ion-select-option value="Facebook">Facebook</ion-select-option>
+			    	<ion-select-option value="Instagram">Instagram</ion-select-option>
+			    	<ion-select-option value="Mailing">Mailing</ion-select-option>
+			    	<ion-select-option value="Whatsapp">Whatsapp</ion-select-option>
+			    	<ion-select-option value="Distribuidor">Distribuidor</ion-select-option>
+			    	<ion-select-option value="Mercado Libre">Mercado Libre</ion-select-option>
+			    	<ion-select-option value="Local Remeros">Mailing</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Pago Referido</ion-label>
+			  	<ion-select [(ngModel)]="referido" placeholder="{{datos.referido}}" [compareWith]="compareFn">
+			    	<ion-select-option value="0">NO</ion-select-option>
+			    	<ion-select-option value="1">SI</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Tomado Por</ion-label>
+			  	<ion-select [(ngModel)]="tomado" placeholder="{{datos.tomado}}" [compareWith]="compareFn">
+			  		<ion-select-option value="">Seleccione</ion-select-option>
+			  		<ion-select-option *ngFor="let asesor of asesores" [value]="asesor.id">{{asesor.nombre}}</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Zona</ion-label>
+			  	<ion-select [(ngModel)]="zona" placeholder="{{datos.departamento}}" [compareWith]="compareFn">
+			  		<ion-select-option value="">Seleccione</ion-select-option>
+			  		<ion-select-option *ngFor="let zona of zonas" [value]="zona.departamento">{{zona.departamento}}</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Ciudad:</ion-label>
+				<ion-input [(ngModel)]="ciudad" placeholder="{{datos.ciudad}}"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Direccion:</ion-label>
+				<ion-input [(ngModel)]="direccion" placeholder="{{datos.direccion}}"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Lineas de Productos</ion-label>
+			  	<ion-select [(ngModel)]="linea" placeholder="{{datos.linea_producto}}" [compareWith]="compareFn">
+			    	<ion-select-option value="">Seleccione</ion-select-option>
+			    	<ion-select-option value="muebles de jardin">Muebles de jardin</ion-select-option>
+			    	<ion-select-option value="toldos">Toldos</ion-select-option>
+			    	<ion-select-option value="cerramientos">Cerramientos</ion-select-option>
+			    	<ion-select-option value="techos de cristal">Techos de cristal</ion-select-option>
+			    	<ion-select-option value="pergolas retractiles">Pergolas retractiles</ion-select-option>
+			    	<ion-select-option value="cortinas de interior">Cortinas de interior</ion-select-option>
+			    	<ion-select-option value="cortinas de enrrollar">Cortinas de enrollar</ion-select-option>
+			    	<ion-select-option value="aberturas">Aberturas</ion-select-option>
+			  	</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Consulta Cliente:</ion-label>
+				<ion-textarea [(ngModel)]="consulta" placeholder="{{datos.observaciones}}"></ion-textarea>
+			</ion-item>
+			<ion-item>
+				<ion-label>Anotaciones Asesor:</ion-label>
+				<ion-textarea [(ngModel)]="anotacion" placeholder="{{datos.anotaciones}}"></ion-textarea>
+			</ion-item>
+		</ion-list>
+		</div>
+	</ng-template>
+	<ion-button (click)="CreaContacto()" disabled={{buttonDisabled}} class="pull-center">{{accion}}</ion-button>
+</ion-content>
+<ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/tabs/tab1']">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-label>Buscar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab2']">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab3']">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Usuario</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>

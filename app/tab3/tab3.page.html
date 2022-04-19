@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      {{nombre || ""}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="todo">
+    <h6 class="contenido"><ion-label class="titulo">Regional</ion-label><br><ion-label class="dato">{{regional}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Rol</ion-label><br><ion-label class="dato">{{role}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Telefono</ion-label><br><ion-label class="dato">{{telefono}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Email</ion-label><br><ion-label class="dato">{{email}}</ion-label></h6>
+  </div>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button (click)="enviarcontrasena()" color="danger" class="btn_con"><ion-icon name="lock-open-outline"></ion-icon>Contraseña</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="borrarstorage()" color="danger" class="btn_con"><ion-icon name="power-outline"></ion-icon>Salir</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

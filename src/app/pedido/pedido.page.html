@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="dismissModal()"></ion-back-button>
+    </ion-buttons>
+      <ion-title>Elementos Pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid class="ion-text-center">
+
+    <!--<ion-row class="ion-margin">
+      <ion-col>
+        <ion-title>
+          <ion-text color="default">
+            Your title remove if don't want use
+          </ion-text>
+        </ion-title>
+      </ion-col>
+    </ion-row>-->
+
+    <ion-row class="header-row">
+      <ion-col>
+        <ion-text>Importe</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Cobro</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Resta Cobrar</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-text>
+            {{pedido.importe}}
+        </ion-text>
+      </ion-col>
+
+        <ion-col>
+          <ion-text>
+            {{pedido.cobro}}
+          </ion-text>
+        </ion-col>
+  
+        <ion-col>
+          <ion-text>
+            {{pedido.resta}}
+          </ion-text>
+        </ion-col>
+    </ion-row>
+    <ion-row class="header-row">
+      <ion-col>
+        <ion-text>Complemento</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Cobro Complemento</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Resta Cobrar Complemento</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-text>
+            {{pedido.complemento}}
+        </ion-text>
+      </ion-col>
+
+        <ion-col>
+          <ion-text>
+            {{pedido.cobro_c}}
+          </ion-text>
+        </ion-col>
+  
+        <ion-col>
+          <ion-text>
+            {{pedido.resta_c}}
+          </ion-text>
+        </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

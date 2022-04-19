@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="dismissModal()"></ion-back-button>
+    </ion-buttons>
+      <ion-title>Crear Visita</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="todo">
+		<ion-item>
+			<ion-label>Gestion</ion-label>
+		  	<ion-select [(ngModel)]="gestion" [compareWith]="compareFn">
+		  		<ion-select-option value="">Seleccione</ion-select-option>
+		    	<ion-select-option value="visita inicial">Visita inicial</ion-select-option>
+		    	<ion-select-option value="segunda visita">Segunda Visita</ion-select-option>
+		    	<ion-select-option value="visita verificacion">Visita Verificacion</ion-select-option>
+		    	<ion-select-option value="visita cobranza">Visita Cobranza</ion-select-option>
+		    	<ion-select-option value="visita de posventa">Visita de Posventa</ion-select-option>
+		  	</ion-select>
+		</ion-item>
+		<ion-item >
+			<ion-label>Responsable</ion-label>
+		  	<ion-select [(ngModel)]="asesor" [compareWith]="compareFn">
+		  		<ion-select-option value="">Seleccione</ion-select-option>
+		    	<ion-select-option *ngFor="let asesor of asesores" value="{{asesor.id}}">{{asesor.nombre}}</ion-select-option>
+		  	</ion-select>
+		</ion-item>
+		<ion-item >
+			<ion-label>Tomado Por:</ion-label>
+		  	<ion-select [(ngModel)]="tomado" [compareWith]="compareFn">
+		  		<ion-select-option value="">Seleccione</ion-select-option>
+		    	<ion-select-option *ngFor="let asesor of asesores" value="{{asesor.id}}">{{asesor.nombre}}</ion-select-option>
+		  	</ion-select>
+		</ion-item>
+		<ion-item>	
+			<ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="myDate" display-timezone="utc"></ion-datetime>
+		</ion-item>
+		<ion-item>
+			<ion-label>Duracion:</ion-label>
+			<ion-input [(ngModel)]="duracion"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Observacion:</ion-label>
+			<ion-input [(ngModel)]="observacion"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Direccion:</ion-label>
+			<ion-input [(ngModel)]="direccion"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Lineas de Productos</ion-label>
+		  	<ion-select [(ngModel)]="linea" [compareWith]="compareFn">
+		    	<ion-select-option value="">Seleccione</ion-select-option>
+		    	<ion-select-option value="muebles de jardin">Muebles de jardin</ion-select-option>
+		    	<ion-select-option value="toldos">Toldos</ion-select-option>
+		    	<ion-select-option value="cerramientos">Cerramientos</ion-select-option>
+		    	<ion-select-option value="techos de cristal">Techos de cristal</ion-select-option>
+		    	<ion-select-option value="pergolas retractiles">Pergolas retractiles</ion-select-option>
+		    	<ion-select-option value="cortinas de interior">Cortinas de interior</ion-select-option>
+		    	<ion-select-option value="cortinas de enrrollar">Cortinas de enrollar</ion-select-option>
+		    	<ion-select-option value="aberturas">Aberturas</ion-select-option>
+		  	</ion-select>
+		</ion-item>
+
+	</div>
+	<ion-button (click)="Creavisita()" class="pull-center">Crear Visita</ion-button>
+</ion-content>
+
+<ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/tabs/tab1']">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-label>Buscar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab2']">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab3']">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Usuario</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>

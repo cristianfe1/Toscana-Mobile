@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button defaultHref="tab/tabs2"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      LISTADO ACTIVIDADES
+    </ion-title>	
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div>
+	<div class="dia">
+	<ion-icon size="large" name="chevron-down-outline"></ion-icon><ion-label class="list">{{nombre1}}</ion-label>
+	</div>
+	<ion-list>
+		<ion-item button (click)="getcotiza(list1.id_cotizacion)" class="margen ion-no-padding item-thumbnail-left" *ngFor="let list1 of lista1">
+			<ion-label class="fixedLabel">
+			<h6 class="nom wrap-text">{{list1.nom_comple}}</h6>
+			<h6 class="wrap-text">{{list1.hora}}</h6>
+			</ion-label>
+			<ion-label>
+			<h6>{{list1.asesor}}</h6>
+			<h6 style="font-weight:bold;">{{list1.accion}}</h6>
+			<h6 class="dir wrap-text">{{list1.direccion}}</h6>
+			</ion-label>
+			<ion-icon name="chevron-forward-outline"></ion-icon>
+		</ion-item>
+	</ion-list>
+</div>
+<div>
+	<div class="dia">
+	<ion-icon size="large" name="chevron-down-outline"></ion-icon><ion-label class="list">{{nombre2}}</ion-label>
+	</div>
+	<ion-list>
+		<ion-item button (click)="getcotiza(list2.id_cotizacion)" class="margen ion-no-padding item-thumbnail-left" *ngFor="let list2 of lista2">
+			<ion-label class="fixedLabel">
+			<h6 class="nom wrap-text">{{list2.nom_comple}}</h6>
+			<h6 class="wrap-text">{{list2.hora}}</h6>
+			</ion-label>
+			<ion-label>
+			<h6>{{list2.asesor}}</h6>
+			<h6 style="font-weight:bold;">{{list2.accion}}</h6>
+			<h6 class="dir wrap-text">{{list2.direccion}}</h6>
+			</ion-label>
+			<ion-icon name="chevron-forward-outline"></ion-icon>
+		</ion-item>
+	</ion-list>
+</div>	
+<div>
+	<div class="dia">
+	<ion-icon size="large" name="chevron-down-outline"></ion-icon><ion-label class="list">{{nombre3}}</ion-label>
+	</div>
+	<ion-list>
+		<ion-item button (click)="getcotiza(list3.id_cotizacion)" class="margen ion-no-padding item-thumbnail-left" *ngFor="let list3 of lista3">
+			<ion-label class="fixedLabel">
+			<h6 class="nom wrap-text">{{list3.nom_comple}}</h6>
+			<h6 class="wrap-text">{{list3.dia_resto}}</h6>
+			</ion-label>
+			<ion-label>
+			<h6>{{list3.asesor}}</h6>
+			<h6 style="font-weight:bold;">{{list3.accion}}</h6>
+			<h6 class="dir wrap-text">{{list3.direccion}}</h6>
+			</ion-label>
+			<ion-icon name="chevron-forward-outline"></ion-icon>
+		</ion-item>
+	</ion-list>
+</div>
+</ion-content>
+<ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/tabs/tab1']">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-label>Buscar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab2']">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab3']">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Usuario</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="dismissModal()"></ion-back-button>
+    </ion-buttons>
+      <ion-title>Pasaje Comercial</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="todo">
+		<ion-item>
+			<ion-label>Consulta Cliente:</ion-label>
+			<ion-input [(ngModel)]="solicitud"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Resultado</ion-label>
+		  	<ion-select [(ngModel)]="result" [compareWith]="compareFn">
+		  		<ion-select-option value="">Seleccione</ion-select-option>
+		    	<ion-select-option value="se cotizo">Se cotizo</ion-select-option>
+		    	<ion-select-option value="solicita visita">Solicita Visita</ion-select-option>
+		    	<ion-select-option value="no producto">No producto</ion-select-option>
+		    	<ion-select-option value="precio fuera de target">Precio fuera de target</ion-select-option>
+		    	<ion-select-option value="no Contesta">No contesta</ion-select-option>
+		    	<ion-select-option value="duplicado">Duplicado</ion-select-option>
+		    	<ion-select-option value="asesoramiento sin cotizacion">Asesoramiento Sin Cotizacion</ion-select-option>
+		  	</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label>Gestion</ion-label>
+		  	<ion-select [(ngModel)]="gestion" [compareWith]="compareFn">
+		  		<ion-select-option value="">Seleccione</ion-select-option>
+		  		<ion-select-option value="Personal">Personal</ion-select-option>
+		    	<ion-select-option value="llamada">Llamada</ion-select-option>
+		    	<ion-select-option value="visita">Visita</ion-select-option>
+		    	<ion-select-option value="visita inicial">Visita Inicial</ion-select-option>
+		    	<ion-select-option value="segunda visita">Segunda Visita</ion-select-option>
+		    	<ion-select-option value="visita verificacion">Visita Verificación</ion-select-option>
+		    	<ion-select-option value="visita cobranza">Visita Cobranza</ion-select-option>
+		    	<ion-select-option value="atencion en el local">Atencion en el local</ion-select-option>
+		    	<ion-select-option value="Visita de posventa">Visita de Posventa</ion-select-option>
+		    	<ion-select-option value="email">Email</ion-select-option>
+		    	<ion-select-option value="whatsapp">Whatsapp</ion-select-option>
+		  	</ion-select>
+		</ion-item>	
+		<ion-item>	
+			<ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="myDate" display-timezone="utc"></ion-datetime>
+		</ion-item>
+		<ion-item>
+			<ion-label>Duracion:</ion-label>
+			<ion-input [(ngModel)]="duracion"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Observacion:</ion-label>
+			<ion-input [(ngModel)]="observacion"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Direccion:</ion-label>
+			<ion-input [(ngModel)]="direccion"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Asignar Asistente</ion-label>
+		  	<ion-select [(ngModel)]="asistente" [compareWith]="compareFn">
+		  		<ion-select-option value="">Seleccione</ion-select-option>
+		    	<ion-select-option *ngFor="let asesor of asesores" value="{{asesor.id}}">{{asesor.nombre}}</ion-select-option>
+		  	</ion-select>
+		</ion-item>
+
+	</div>
+	<ion-button (click)="pasar()" class="pull-center">Gestion Comercial</ion-button>
+</ion-content>
+
+<ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/tabs/tab1']">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-label>Buscar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab2']">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab3']">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Usuario</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>

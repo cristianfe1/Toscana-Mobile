@@ -1,0 +1,56 @@
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button defaultHref="tab/tab2"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{data}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div *ngIf="data=='GESTIÓN CONTACTO' else Otralista">
+<ion-list class="lista_datos" >
+  <ion-item button (click)="getcliente(info.idcliente)" class="ion-no-padding item-thumbnail-left" *ngFor="let info of infos">
+  	<h5>{{ info.idcliente }}</h5>
+    <h6 class="wrap-text">{{ info.nombres }} {{ info.apellidos }} - {{info.departamento}}</h6>
+    <h6 *ngIf="info.fecha_compara >= today else Otrocolor" class="borded bg_gn">{{ info.fecha_format_asignacion }}</h6>
+    <ng-template #Otrocolor>
+      <h6 class="borded bg_rd">{{ info.fecha_format_asignacion }}</h6>
+    </ng-template>
+  </ion-item>
+</ion-list>
+<ion-button (click)="crearcontacto()" class="btn_con"><ion-icon name="person-add-outline"></ion-icon>Nuevo</ion-button>
+</div>
+<ng-template #Otralista>
+  <ion-list class="lista_datos" >
+    <ion-item button (click)="getcotiza(info.idcotizacion)" class="item-thumbnail-left  " *ngFor="let info of infos">
+      <h5>{{ info.idcotizacion }}</h5>
+      <h6 class="wrap-text">{{ info.nombres }} {{ info.apellidos }} - {{info.departamento}} - {{info.nom_asesor}}</h6>
+      <h6 *ngIf="info.fecha_compara >= today else Otrocolor" class="borded bg_gn">{{ info.fecha_format_asignacion }}</h6>
+    <ng-template #Otrocolor>
+      <h6 class="borded bg_rd">{{ info.fecha_format_asignacion }}</h6>
+    </ng-template>
+    </ion-item>
+  </ion-list>
+</ng-template>
+
+
+
+</ion-content>
+<ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/tabs/tab1']">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-label>Buscar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab2']">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab3']">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Usuario</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>

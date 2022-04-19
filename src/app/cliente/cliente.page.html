@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button defaultHref="gestion"></ion-back-button>
+    </ion-buttons>
+    <ion-title>VER CLIENTE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngFor="let cliente of clientes">
+	<div *ngIf="api=='1' else toscana" class="todo">
+		<h6 class="contenido"><ion-label class="titulo">Cliente</ion-label><br><ion-label class="dato">{{cliente.nombres}} {{cliente.apellidos}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Asesor</ion-label><br><ion-label class="dato">{{cliente.nombre}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Profesion</ion-label><br><ion-label class="dato">{{cliente.profesion}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Genero</ion-label><br><ion-label class="dato">{{cliente.genero}}</ion-label></h6>
+		<h6 class="contenido"><ion-label class="titulo">Telefono</ion-label><br><ion-label class="dato">{{cliente.telefono}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Celular</ion-label><br><ion-label class="dato">{{cliente.celular}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Correo</ion-label><br><ion-label class="dato">{{cliente.email}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Origen</ion-label><br><ion-label class="dato">{{cliente.origen}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Fecha Creacion</ion-label><br><ion-label class="dato">{{cliente.fecha_creacion}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Fecha Asignacion</ion-label><br><ion-label class="dato">{{cliente.fecha_asignacion}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Ultima Actualizacion</ion-label><br><ion-label class="dato">{{cliente.ultima_actualizacion}}</ion-label></h6>
+    <h6 *ngIf="cliente.referido == 0 else otro" class="contenido"><ion-label class="titulo">Referido</ion-label><br><ion-label class="dato">No</ion-label></h6>
+		<ng-template #otro class="contenido"><ion-label class="titulo">Referido</ion-label><br><ion-label class="dato">Si</ion-label></ng-template>
+    <h6 *ngIf="cliente.tomado == 0 else toma" class="contenido"><ion-label class="titulo">Tomado Por</ion-label><br><ion-label class="dato">Sin Asignar</ion-label></h6>
+    <ng-template #toma class="contenido"><ion-label class="titulo">Tomado Por</ion-label><br><ion-label class="dato">{{cliente.tomado_por}}</ion-label></ng-template>
+    <h6 class="contenido"><ion-label class="titulo">Zona</ion-label><br><ion-label class="dato">{{cliente.departamento}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Ciudad</ion-label><br><ion-label class="dato">{{cliente.ciudad}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Direccion</ion-label><br><ion-label class="dato">{{cliente.direccion}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Linea de Producto</ion-label><br><ion-label class="dato">{{cliente.linea_producto}}</ion-label></h6>
+		<h6 class="contenido"><ion-label class="titulo">Consulta Cliente</ion-label><br><ion-label class="dato">{{cliente.observaciones}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Anotaciones Asesor</ion-label><br><ion-label class="dato">{{cliente.anotaciones}}</ion-label></h6>
+	</div>
+  <ng-template #toscana>
+    <h6 class="contenido"><ion-label class="titulo">Cliente</ion-label><br><ion-label class="dato">{{cliente.nombres}} {{cliente.apellidos}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Razon Social</ion-label><br><ion-label class="dato">{{cliente.razon_social}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Telefono</ion-label><br><ion-label class="dato">{{cliente.telefono}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Correo</ion-label><br><ion-label class="dato">{{cliente.email}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Pais:</ion-label><br><ion-label class="dato">{{cliente.pais}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Departamento</ion-label><br><ion-label class="dato">{{cliente.departamento}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Origen</ion-label><br><ion-label class="dato">{{cliente.origen}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Medio Entero</ion-label><br><ion-label class="dato">{{cliente.medio_entero}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Asesor</ion-label><br><ion-label class="dato">{{cliente.nombre}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Observaciones</ion-label><br><ion-label class="dato">{{cliente.observaciones}}</ion-label></h6>
+
+  </ng-template>
+   <div class="ion-text-center">
+    <ion-label class="margen">Actividades</ion-label>
+  </div>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button (click)="enviarcomercial()" class="btn_con"><ion-icon name="add-circle-outline"></ion-icon>COMERCIAL</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="editarcliente()" class="btn_con"><ion-icon name="add-circle-outline"></ion-icon>EDITAR</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="cliente.celular != ''">
+    <ion-col size="6">
+      <ion-button data-href="tel:{{cliente.celular}}" class="btn_con"><ion-icon name="call-outline"></ion-icon>Llamar</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button data-href="https://api.whatsapp.com/send?phone=+54{{cliente.celular}}" class="btn_con"><ion-icon name="logo-whatsapp"></ion-icon>Whatsapp</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="cliente.celular == ''">
+    <ion-col size="6">
+      <ion-button data-href="tel:{{cliente.telefono}}" class="btn_con"><ion-icon name="call-outline"></ion-icon>Llamar</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button data-href="https://api.whatsapp.com/send?phone=+54{{cliente.telefono}}" class="btn_con"><ion-icon name="logo-whatsapp"></ion-icon>Whatsapp</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button href="mailto:{{cliente.email}}?subject=Mensaje Contacto Cliente" class="btn_con"><ion-icon name="mail-outline"></ion-icon>EMAIL</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/tabs/tab1']">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-label>Buscar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab2']">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab3']">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Usuario</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>

@@ -1,0 +1,50 @@
+ion-header{ 
+	--ion-background-color:#1F262D; 
+}
+ion-title{ 
+	margin-left: 10%;
+	color: #999999;
+}
+ion-back-button{ color: #999999; }
+
+ion-button{
+    margin-top: 5px !important;
+    margin-left: 20px; 
+}
+.subir{
+	margin: auto;
+	margin-top: 25px;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+ion-button.bt_regis{
+	margin-left: 20%;
+	--background: #999999;
+}
+.texto{
+	margin-top: 10px;
+}
+.btn_con{
+	width: 80%;
+}
+.wrap-text{
+  width: 80px;
+  margin-right: 30px;
+  margin-left: 10px;
+  font-family: "Open Sans";
+  color: #666666;
+}
+.textolargo{
+  width: 60%;
+  margin-right: 30px;
+  white-space: normal;
+  font-family: "Open Sans";
+  color: #666666;
+}
+.sinmargen{
+  width: 50px;
+  margin-right: 5px;
+  font-family: "Open Sans";
+  color: #666666;
+}

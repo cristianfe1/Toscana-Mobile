@@ -1,17 +1,31 @@
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
+    <ion-title class="ion-text-center">
+      Buscador
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+ 
+  <ion-searchbar (keyup.enter)="getItems()" [(ngModel)]="Mi_Busqueda"></ion-searchbar>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-list>
+
+  <ion-item *ngFor="let post of posts" >
+    
+      <ion-label>{{post.texto}}</ion-label>
+      <div class="ion-text-end">
+      <ion-button *ngIf="post.id>0 else Otro" outline item-end class="derecha" (click)="enviarcoti(post.id)"><ion-icon slot="icon-only" name="list-outline"></ion-icon></ion-button>
+      <ng-template #Otro>
+      <ion-button outline item-end class="derecha" (click)="enviarcont(post.id_contacto)"><ion-icon slot="icon-only" name="person-circle-outline"></ion-icon></ion-button>
+      </ng-template>
+      </div>
+
+
+  </ion-item>
+
+</ion-list>
+
 </ion-content>

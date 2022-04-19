@@ -1,0 +1,62 @@
+.wrap-text {
+  white-space: normal;
+  margin-right: 55px;
+  color: #666666;
+  max-width: 220px;
+}
+.borded{
+	position: absolute;
+	float: right;
+	font-size: 10px;
+	border: 2px solid rgb(200, 200, 200);
+	height: 15px;
+	top: 0px;
+    right: 20px;
+    min-width: 65px;
+    max-width: 65px;
+  	color: #666666;
+}
+.borded2{
+	position: absolute;
+	float: right;
+	font-size: 10px;
+	border: 2px solid rgb(200, 200, 200);
+	height: 15px;
+	top: 0px;
+    right: 20px;
+    min-width: 65px;
+    max-width: 65px;
+  	color: #666666;
+}
+ion-header{ 
+	--ion-background-color:#DC0000; 
+}
+ion-title{ 
+	color: #FFFFFF;
+}
+h5{
+	width: 60px;
+	margin-right: 15px;
+  	color: #666666;
+}
+h6{
+	min-width: 60px;
+}
+.bg_gn{ background:#006600; color:#FFFFFF;}
+.bg_rd{ background:#CC0000; color:#FFFFFF;}
+ion-back-button{ color: #FFFFFF;}
+.lista_datos{
+	max-height: 85%;
+    overflow-y: scroll;
+}
+ion-button.btn_con.button{
+	margin-left: 10%;
+	margin-top:6%;
+	--background: #DC0000;
+    width: 80%;
+    height: 30px; 
+    bottom: 0px;
+}
+.circulo{
+  font-size: 64px;
+}

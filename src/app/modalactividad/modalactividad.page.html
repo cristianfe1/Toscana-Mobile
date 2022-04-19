@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="dismissModal()"></ion-back-button>
+    </ion-buttons>
+      <ion-title>Actividad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="todo" *ngFor="let actividad of acti">
+    <h6 class="contenido"><ion-label class="titulo">Asesor</ion-label><br><ion-label class="dato">{{actividad.nombre }}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Tomador</ion-label><br><ion-label class="dato">{{actividad.tomador }}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Fecha</ion-label><br><ion-label class="dato">{{actividad.fecha_hora}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Accion</ion-label><br><ion-label class="dato">{{actividad.accion}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Duracion</ion-label><br><ion-label class="dato">{{actividad.duracion}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Estado</ion-label><br><ion-label class="dato">{{actividad.etapa}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Descripcion</ion-label><br><ion-label class="dato">{{actividad.observaciones}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Direccion</ion-label><br><ion-label class="dato">{{actividad.direccion}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Linea</ion-label><br><ion-label class="dato">{{actividad.linea_actividad}}</ion-label></h6>  
+  </div>
+</ion-content>
+<ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/tabs/tab1']">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-label>Buscar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab2']">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab3']">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Usuario</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>

@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button defaultHref="gestion"></ion-back-button>
+    </ion-buttons>
+      <ion-title>VER COTIZACION</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngFor="let cotizacion of cotizaciones">
+  <div *ngIf="cotizacion.f_cotizacion == '0000-00-00' else cotiza">
+    <div class="cotizacion ion-text-center">
+      <ion-label>COMERCIAL NO. {{cotizacion.id}} - {{cotizacion.Nombre_contacto}}</ion-label>  
+    </div>
+  </div>
+  <div *ngIf="cotizacion.f_cotizacion != '0000-00-00' && cotizacion.f_fecha_sena == '0000-00-00' && cotizacion.f_factory == '0000-00-00' else pedido">
+    <div class="cotizacion ion-text-center">
+      <ion-label>COTIZACION NO. {{cotizacion.id}} - {{cotizacion.Nombre_contacto}}</ion-label>  
+    </div>
+  </div>
+  <div *ngIf="cotizacion.f_fecha_sena != '0000-00-00' || cotizacion.f_factory != '0000-00-00' ">
+    <div class="cotizacion ion-text-center">
+      <ion-label>PEDIDO NO. {{cotizacion.id}} - {{cotizacion.Nombre_contacto}}</ion-label>
+    </div>
+  </div>
+	<div class="todo">
+    <h6 class="contenido"><ion-label class="titulo">Asesor</ion-label><br><ion-label class="dato">{{cotizacion.Nombre_asesor}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Asistente</ion-label><br><ion-label class="dato">{{cotizacion.Nombre_asistente}}</ion-label></h6>
+		<h6 class="contenido"><ion-label class="titulo">Telefono</ion-label><br><ion-label class="dato">{{cotizacion.telefono}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Celular</ion-label><br><ion-label class="dato">{{cotizacion.celular}}</ion-label></h6>
+		<h6 class="contenido"><ion-label class="titulo">Correo</ion-label><br><ion-label class="dato">{{cotizacion.email}}</ion-label></h6>
+		<h6 class="contenido"><ion-label class="titulo">Direccion</ion-label><br><ion-label class="dato">{{cotizacion.direccion}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Zona</ion-label><br><ion-label class="dato">{{cotizacion.zona}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Fecha Cotizacion</ion-label><br><ion-label class="dato">{{cotizacion.f_cotizacion}}</ion-label></h6>
+    <h6 class="contenido"><ion-label class="titulo">Tipo Producto</ion-label><br><ion-label class="dato">{{cotizacion.tipo_producto}}</ion-label></h6>
+	</div>
+	<!--<div class="bt_ac">
+		<ion-button (click)="veractividad(cotizacion.id,cotizacion.telefono_factura)">Ver Actividad</ion-button>
+	</div>-->
+  <div class="ion-text-center">
+    <ion-label class="margen">Actividades</ion-label>
+  </div>
+  <ion-row *ngIf="cotizacion.celular != ''">
+    <ion-col size="6">
+      <ion-button (click)="contador()" (ionFocus)="detener(cotizacion.id)" data-href="tel:{{cotizacion.celular}}" class="btn_con"><ion-icon name="call-outline"></ion-icon>Llamar</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="creardata('','',cotizacion.id,0,'whatsapp','')" data-href="https://api.whatsapp.com/send?phone=+54{{cotizacion.celular}}" class="btn_con"><ion-icon name="logo-whatsapp"></ion-icon>Whatsapp</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="cotizacion.celular == ''">
+    <ion-col size="6">
+      <ion-button (click)="contador()" (ionFocus)="detener(cotizacion.id)" data-href="tel:{{cotizacion.telefono}}" class="btn_con"><ion-icon name="call-outline"></ion-icon>Llamar</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="creardata('','',cotizacion.id,0,'whatsapp','')" data-href="https://api.whatsapp.com/send?phone=+54{{cotizacion.telefono}}" class="btn_con"><ion-icon name="logo-whatsapp"></ion-icon>Whatsapp</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button (click)="creardata('','',cotizacion.id,0,'email','')" href="mailto:{{cotizacion.email}}?subject=Mensaje Contacto Cliente" class="btn_con"><ion-icon name="mail-outline"></ion-icon>EMAIL</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="presentAlertRadio(cotizacion.id,cotizacion.f_cotizacion)" class="btn_con"><ion-icon name="locate-outline"></ion-icon>CHECK VISITA</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12.7">
+      <ion-button class="btn_con" (click)="crearvisita(cotizacion.id)"><ion-icon name="locate-outline"></ion-icon>CREAR VISITA</ion-button>
+    </ion-col>
+  </ion-row>
+  <div class="ion-text-center">
+    <ion-label class="margen">Acciones</ion-label>
+  </div>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button (click)="enviarcont(cotizacion.id_contacto)" class="btn_con"><ion-icon name="person-circle-outline"></ion-icon>CONTACTO</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="pdf(cotizacion.id)" class="btn_con"><ion-icon name="document-outline"></ion-icon>COTIZACION</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button (click)="veractividad(cotizacion.id,cotizacion.celular)" class="btn_con"><ion-icon name="newspaper-outline"></ion-icon>HISTORICO</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="datospedido(cotizacion.id,cotizacion.f_cotizacion)" class="btn_con"><ion-icon name="search-outline"></ion-icon>VER MAS</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+<ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/tabs/tab1']">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-label>Buscar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab2']">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab3']">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Usuario</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>

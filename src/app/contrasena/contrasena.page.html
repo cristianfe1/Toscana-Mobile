@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button defaultHref="gestion"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{nombre || ""}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="cotizacion ion-text-center">
+    	<ion-label>Cambiar Contraseña</ion-label>
+  	</div>
+  	<div class="datos">
+  		<div class="campo">
+	  	<ion-label class="titulos">Contraseña Actual:</ion-label><br>
+	  	<ion-item>
+			<ion-row class="bg_blanco"><ion-input [(ngModel)]="actual" [type]="passwordType" clearOnEdit="false" placeholder="Contraseña"></ion-input><ion-icon class="add-on" name="eye" [color]="passwordShown === true ? 'gray' : 'dark'" item-end (click)="togglepassword(1)"></ion-icon></ion-row>
+		</ion-item>
+		</div>
+		<div class="campo">
+		<ion-label class="titulos">Nueva Contraseña:</ion-label><br>
+	  	<ion-item>
+			<ion-row class="bg_blanco"><ion-input [(ngModel)]="nueva" [type]="passwordType2" clearOnEdit="false" placeholder="Contraseña"></ion-input><ion-icon class="add-on" name="eye" [color]="passwordShown2 === true ? 'gray' : 'dark'" item-end (click)="togglepassword(2)"></ion-icon></ion-row>
+		</ion-item>
+		</div>
+		<div class="campo">
+		<ion-label class="titulos">Repita Nueva Contraseña:</ion-label><br>
+		<ion-item>
+			<ion-row class="bg_blanco"><ion-input [(ngModel)]="nueva2" [type]="passwordType3" clearOnEdit="false" placeholder="Contraseña"></ion-input><ion-icon class="add-on" name="eye" [color]="passwordShown3 === true ? 'gray' : 'dark'" item-end (click)="togglepassword(3)"></ion-icon></ion-row>
+		</ion-item>
+		</div>
+		<div class="campo ion-text-center">
+			<ion-button (click)="actualizapass()" color="success"><ion-icon name="shield-checkmark-outline"></ion-icon>Cambiar</ion-button>
+		</div>
+	</div>
+
+</ion-content>

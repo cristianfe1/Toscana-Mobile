@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="dismissModal()"></ion-back-button>
+    </ion-buttons>
+      <ion-title>Concretar Visita</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-label class="space" style="font-size: 20px; margin-left: 5%;">Seleccione la Visita</ion-label>
+    <ion-select class="space" [(ngModel)]="visita" [compareWith]="compareFn">
+      <ion-select-option *ngFor="let historico of histo" value="{{historico.id}}">{{historico.id}} - {{historico.accion}}</ion-select-option>
+    </ion-select>
+
+  <ion-radio-group [(ngModel)]="val" value="datos">
+    <ion-list-header class="space">
+      <ion-label style="font-size: 20px;">Seleccione Resultado de la visita</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Verde</ion-label>
+      <ion-radio slot="start" value="verde"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Amarillo</ion-label>
+      <ion-radio slot="start" value="amarillo"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Rojo</ion-label>
+      <ion-radio slot="start" value="rojo"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+
+  <ion-textarea style="margin-left: 5%;" class="space" [(ngModel)]="obse" placeholder="Observaciones"></ion-textarea>
+
+
+<ion-button style="margin-left: 15%;" class="space" color="success" (click)="getLocation()" color="danger" class="btn_con">Registrar Proceso Visita</ion-button>
+
+</ion-content>

@@ -1,0 +1,37 @@
+ion-header{ 
+	--ion-background-color:#1F262D;
+}
+ion-title{ 
+	color: #999999;
+}
+
+.contenido{
+	margin-left: 5%;
+	margin-right:  5%;
+	border-bottom: 1px solid rgb(200, 200, 200);
+
+}
+.titulo{
+	font-family: 'Open Sans', sans-serif; font-size:14px; color:#666;
+	font-weight: bold;
+}
+
+.todo{
+	position: relative;
+	margin: auto;
+	margin-top: 10%;
+	width: 90%;
+	height: 50%;
+	overflow:scroll;
+}
+.dato{
+	font-family: 'Open Sans', sans-serif; font-size:14px; color:#666;
+}
+.bt_ac{
+	text-align: center;
+	margin-bottom: 5px;
+}
+.btn_con{
+	margin-left: 10px;
+	width: 90%;
+}

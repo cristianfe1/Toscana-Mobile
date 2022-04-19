@@ -1,0 +1,44 @@
+ion-header{ 
+	--ion-background-color:#1F262D; 
+}
+ion-title{ 
+	margin-left: 14%;
+	color: #999999;
+}
+
+.contenido{
+	margin-left: 5%;
+	margin-right:  5%;
+	border-bottom: 1px solid rgb(200, 200, 200);
+
+}
+
+.titulo{
+	font-size:14px; 
+	color:#666;
+	font-weight: bold;
+}
+
+.todo{
+	position: relative;
+	margin: auto;
+	margin-top: 10%;
+	width: 90%;
+	height: 50%;
+	border: #999999 2px solid;
+	border-radius: 20px;
+	overflow:scroll;
+	max-height: 400px;
+}
+.dato{
+	font-size:14px; 
+	color:#666;
+}
+ion-back-button{ color: #999999; }
+.btn_con{
+	width: 90%;
+	margin-left: 10px;
+}
+ion-button{
+	--background: #DC0000;
+}
