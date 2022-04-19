@@ -1,0 +1,7 @@
+{
+  "name": "Toscana",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
